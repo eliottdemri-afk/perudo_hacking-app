@@ -131,7 +131,7 @@ with col2:
             else:
                 return "background-color: #d73027; color: white"
 
-        styled = df.style.applymap(color_cell).format("{:.1f}%")
+        styled = df.style.map(color_cell).format("{:.1f}%")
         st.dataframe(styled, use_container_width=True, height=420)
 
         st.caption("🟢 ≥70% safe | 🟡 30-50% risqué | 🔴 <15% très risqué")
@@ -144,7 +144,7 @@ with col2:
             paco_data["🦜 Pacos"].append(round(p, 1))
 
         df_paco = pd.DataFrame(paco_data, index=[f"k={k}" for k in range(1, max_k_paco + 1)])
-        styled_paco = df_paco.style.applymap(color_cell).format("{:.1f}%")
+        styled_paco = df_paco.style.map(color_cell).format("{:.1f}%")
         st.dataframe(styled_paco, use_container_width=True)
         st.caption("Pour les Pacos, p=1/6 — les annonces de Pacos sont ~2× plus rares")
 
